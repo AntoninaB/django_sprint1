@@ -1,5 +1,6 @@
-from django.shortcuts import render
 from django.http import Http404
+
+from django.shortcuts import render
 
 posts = [
     {
@@ -54,12 +55,12 @@ def index(request):
 
 
 def post_detail(request, pk):
-    try:
-        template = 'blog/detail.html'
-        context = {'post': posts_id[pk]}
-        return render(request, template, context)
-    except KeyError:
-        raise Http404('Пост не был найден. Ошибка 404.')
+    template = "blog/detail.html"
+    for post in posts:
+        if post['id'] == pk:
+            context = {'post': post}
+            return render(request, template, context)
+    return Http404('Пост не был найден. Ошибка 404.') 
 
 
 def category_posts(request, category_slug):
