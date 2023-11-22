@@ -59,7 +59,7 @@ def post_detail(request, pk):
         if post['id'] == pk:
             context = {'post': post}
             return render(request, template, context)
-    return Http404('Пост не был найден. Ошибка 404.') 
+    return Http404('Пост не был найден. Ошибка 404.')
 
 
 def category_posts(request, category_slug):
