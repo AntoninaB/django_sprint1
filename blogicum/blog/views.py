@@ -53,13 +53,11 @@ def index(request):
     return render(request, template, context)
 
 
-def post_detail(request, pk):
-    template = "blog/detail.html"
-    for post in posts:
-        if post['id'] == pk:
-            context = {'post': post}
-            return render(request, template, context)
-    return Http404('Пост не был найден. Ошибка 404.')
+def post_detail(request, id):
+    if id in post_id:
+        context = {'post': post_id[id]}
+        return render(request, 'blog/detail.html', context)
+    raise Http404('Данной страницы не существует')
 
 
 def category_posts(request, category_slug):
