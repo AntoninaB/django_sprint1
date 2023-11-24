@@ -44,7 +44,7 @@ posts = [
     },
 ]
 
-post_id = {post['id']: post for post in posts}
+posts_id = {post['id']: post for post in posts}
 
 
 def index(request):
@@ -54,8 +54,8 @@ def index(request):
 
 
 def post_detail(request, id):
-    if id in post_id:
-        context = {'post': post_id[id]}
+    if id in posts_id:
+        context = {'post': posts_id[id]}
         return render(request, 'blog/detail.html', context)
     raise Http404('Данной страницы не существует')
 
