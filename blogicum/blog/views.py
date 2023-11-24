@@ -44,7 +44,7 @@ posts = [
     },
 ]
 
-posts_id = {post['id']: post for post in posts}
+post_id = {post['id']: post for post in posts}
 
 
 def index(request):
